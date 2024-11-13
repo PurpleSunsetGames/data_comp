@@ -35,7 +35,7 @@ for line in median_age_read.split("\n"):
         column_names_read = True
     else:
         L = line.split(",")
-        median_age_data[L[0].strip('"')] = {"years": float(L[2].strip('"')), "ranking":L[4]}
+        median_age_data[L[0].strip('"')] = {"years":float(L[2].strip('"')), "ranking":L[4]}
 
 shared_between_sets = set(waste_data.keys()).intersection(set(median_age_data.keys()))
 median_age_list = {}
