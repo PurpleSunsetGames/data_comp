@@ -35,10 +35,19 @@ for line in median_age_read.split("\n"):
         column_names_read = True
     else:
         L = line.split(",")
-        median_age_data[L[0].strip('"')] = {"years":L[2].strip('"'), "ranking":L[4]}
+        median_age_data[L[0].strip('"')] = {"years": float(L[2].strip('"')), "ranking":L[4]}
 
 shared_between_sets = set(waste_data.keys()).intersection(set(median_age_data.keys()))
+median_age_list = {}
+
+i=0
 for country in shared_between_sets:
+    median_age_list[i]=median_age_data[country]["years"]
     print(country + " GDP per Capita: " + waste_data[country]["gdp_per_capita"])
     print(country + " Median Age: " + median_age_data[country]["years"])
+    i=i+1
 print(len(shared_between_sets))
+
+print("--")
+print(median_age_data)
+print(data)
