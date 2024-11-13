@@ -1,5 +1,8 @@
 import numpy
 import matplotlib
+import pandas as pd
+import pandas_datareader as pdr
+
 
 waste_read = ''
 median_age_read = ''
