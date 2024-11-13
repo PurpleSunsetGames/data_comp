@@ -6,7 +6,7 @@ median_age_read = ''
 with open("waste_data.csv", "r") as file:
     waste_read = file.read()
 
-with open("median_age.csv", "r") as file:
+with open("Median_age_atoz.csv", "r") as file:
     median_age_read = file.read()
 
 
@@ -33,8 +33,5 @@ for line in median_age_read.split("\n"):
     else:
         L = line.split(",")
         median_age_data[L[0].strip('"')] = {"years":L[2].strip('"'), "ranking":L[4]}
-
-
-
 
 
