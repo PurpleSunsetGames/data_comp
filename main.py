@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -44,7 +44,7 @@ median_age_list = []
 waste_data_list = []
 for country in shared_between_sets:
     median_age_list.append(median_age_data[country]["years"])
-    waste_data_list.append(waste_data[country]["gdp_per_capita"])
+    waste_data_list.append(float(waste_data[country]["gdp_per_capita"]))
     print(country + " GDP per Capita: " + waste_data[country]["gdp_per_capita"])
     print(country + " Median Age: " + str(median_age_data[country]["years"]))
 print(len(shared_between_sets))
@@ -55,3 +55,6 @@ print("--")
 
 plt.scatter(x=median_age_list, y= waste_data_list)
 plt.show()
+reg=np.polyfit(median_age_list, waste_data_list, deg = 1)
+print(reg)
+
