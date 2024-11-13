@@ -1,5 +1,6 @@
 import numpy
 import matplotlib
+import matplotlib.pyplot as plt
 import pandas as pd
 import pandas_datareader as pdr
 
@@ -28,6 +29,7 @@ for line in waste_read.split("\n"):
                 "composition_metal_percent":L[7],"composition_other_percent":L[8],"composition_paper_cardboard_percent":L[9],
                 "composition_plastic_percent":L[10],"population_population_number_of_people":L[11],"special_waste_e_waste_tons_year":L[12],
                 "total_msw_generated_tons_year":L[13]}
+column_names_read=False
 
 for line in median_age_read.split("\n"):
     if not column_names_read:
@@ -38,16 +40,18 @@ for line in median_age_read.split("\n"):
         median_age_data[L[0].strip('"')] = {"years":float(L[2].strip('"')), "ranking":L[4]}
 
 shared_between_sets = set(waste_data.keys()).intersection(set(median_age_data.keys()))
-median_age_list = {}
-
-i=0
+median_age_list = []
+waste_data_list = []
 for country in shared_between_sets:
-    median_age_list[i]=median_age_data[country]["years"]
+    median_age_list.append(median_age_data[country]["years"])
+    waste_data_list.append(waste_data[country]["gdp_per_capita"])
     print(country + " GDP per Capita: " + waste_data[country]["gdp_per_capita"])
-    print(country + " Median Age: " + median_age_data[country]["years"])
-    i=i+1
+    print(country + " Median Age: " + str(median_age_data[country]["years"]))
 print(len(shared_between_sets))
 
 print("--")
-print(median_age_data)
-print(data)
+#print(median_age_data)
+#print(median_age_list)
+
+plt.scatter(x=median_age_list, y= waste_data_list)
+plt.show()
