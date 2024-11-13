@@ -1,4 +1,4 @@
-﻿name,slug,years,date_of_information,ranking,region
+name,slug,years,date_of_information,ranking,region
 Afghanistan,afghanistan,20,2024,206,South Asia
 Albania,albania,36.3,2024,91,Europe
 Algeria,algeria,29.1,2024,146,Africa
@@ -13,7 +13,7 @@ Aruba,aruba,40.9,2024,56,Central America and the Caribbean
 Australia,australia,38.1,2024,77,Australia and Oceania
 Austria,austria,44.9,2024,24,Europe
 Azerbaijan,azerbaijan,34.3,2024,104,Middle East
-"Bahamas, The",bahamas-the,30.7,2024,133,Central America and the Caribbean
+The Bahamas,the-bahamas,30.7,2024,133,Central America and the Caribbean
 Bahrain,bahrain,33.4,2024,111,Middle East
 Bangladesh,bangladesh,29.6,2024,144,South Asia
 Barbados,barbados,41.4,2024,50,Central America and the Caribbean
@@ -46,8 +46,8 @@ Christmas Island,christmas-island,38,2021,78,Australia and Oceania
 Cocos (Keeling) Islands,cocos-keeling-islands,40,2021,62,Australia and Oceania
 Colombia,colombia,32.7,2024,114,South America
 Comoros,comoros,22.7,2024,183,Africa
-"Congo, Democratic Republic of the",congo-democratic-republic-of-the,16.9,2024,224,Africa
-"Congo, Republic of the",congo-republic-of-the,20.7,2024,200,Africa
+Democratic Republic of the Congo,democratic-republic-of-the-congo,16.9,2024,224,Africa
+Republic of the Congo,republic-of-the-congo,20.7,2024,200,Africa
 Cook Islands,cook-islands,41.1,2024,53,Australia and Oceania
 Costa Rica,costa-rica,35.5,2024,96,Central America and the Caribbean
 Cote d'Ivoire,cote-divoire,21.2,2024,195,Africa
@@ -74,7 +74,7 @@ Finland,finland,43.3,2024,36,Europe
 France,france,42.6,2024,41,Europe
 French Polynesia,french-polynesia,35.3,2024,98,Australia and Oceania
 Gabon,gabon,22,2024,187,Africa
-"Gambia, The",gambia-the,20.2,2024,205,Africa
+The Gambia,the-gambia,20.2,2024,205,Africa
 Gaza Strip,gaza-strip,19.5,2024,208,Middle East
 Georgia,georgia,38.3,2024,75,Middle East
 Germany,germany,46.8,2024,9,Europe
@@ -109,8 +109,8 @@ Jordan,jordan,25,2024,172,Middle East
 Kazakhstan,kazakhstan,31.9,2024,121,Central Asia
 Kenya,kenya,21.2,2024,196,Africa
 Kiribati,kiribati,27.3,2024,160,Australia and Oceania
-"Korea, North",korea-north,35.9,2024,94,East and Southeast Asia
-"Korea, South",korea-south,45.5,2024,15,East and Southeast Asia
+North Korea,north-korea,35.9,2024,94,East and Southeast Asia
+South Korea,south-korea,45.5,2024,15,East and Southeast Asia
 Kosovo,kosovo,32,2024,119,Europe
 Kuwait,kuwait,30.3,2024,138,Middle East
 Kyrgyzstan,kyrgyzstan,28.3,2024,151,Central Asia
@@ -134,7 +134,7 @@ Marshall Islands,marshall-islands,25.5,2024,169,Australia and Oceania
 Mauritania,mauritania,22.1,2024,185,Africa
 Mauritius,mauritius,39.6,2024,66,Africa
 Mexico,mexico,30.8,2024,132,North America
-"Micronesia, Federated States of",micronesia-federated-states-of,28.2,2024,152,Australia and Oceania
+Federated States of Micronesia,federated-states-of-micronesia,28.2,2024,152,Australia and Oceania
 Moldova,moldova,39.9,2024,63,Europe
 Monaco,monaco,56.9,2024,1,Europe
 Mongolia,mongolia,31.5,2024,126,East and Southeast Asia
@@ -170,7 +170,7 @@ Romania,romania,45.5,2024,16,Europe
 Russia,russia,41.9,2024,48,Central Asia
 Rwanda,rwanda,20.8,2024,198,Africa
 Saint Barthelemy,saint-barthelemy,47.4,2024,6,Central America and the Caribbean
-"Saint Helena, Ascension, and Tristan da Cunha",saint-helena-ascension-and-tristan-da-cunha,45.1,2024,21,Africa
+Saint Helena Ascension and Tristan da Cunha,saint-helena-ascension-and-tristan-da-cunha,45.1,2024,21,Africa
 Saint Kitts and Nevis,saint-kitts-and-nevis,38.6,2024,72,Central America and the Caribbean
 Saint Lucia,saint-lucia,39.7,2024,65,Central America and the Caribbean
 Saint Martin,saint-martin,34.2,2024,106,Central America and the Caribbean
