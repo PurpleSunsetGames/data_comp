@@ -40,4 +40,5 @@ for line in median_age_read.split("\n"):
 shared_between_sets = set(waste_data.keys()).intersection(set(median_age_data.keys()))
 for country in shared_between_sets:
     print(country + " GDP per Capita: " + waste_data[country]["gdp_per_capita"])
-    print(country + median_age_data[country]["years"])
+    print(country + " Median Age: " + median_age_data[country]["years"])
+print(len(shared_between_sets))
