@@ -98,3 +98,7 @@ axs[1].set(xlabel="median age", ylabel="gdp per capita")
 axs[0].scatter(x=median_age_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
 axs[1].scatter(x=median_age_list, y = gdp_per_capita_list)
 plt.show()
+
+reg=np.polyfit(median_age_list, waste_data_list, deg = 1)
+print(reg)
+
