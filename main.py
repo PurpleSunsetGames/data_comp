@@ -97,8 +97,24 @@ axs[1].set(xlabel="median age", ylabel="gdp per capita")
 
 axs[0].scatter(x=median_age_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
 axs[1].scatter(x=median_age_list, y = gdp_per_capita_list)
+
+# Linear regressions
+reg0=np.polyfit(median_age_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
+print(reg0)
+axs[0].plot(range(15,51), reg0[0]*np.array(range(15,51))+reg0[1])
+
+reg1=np.polyfit(median_age_list, gdp_per_capita_list, deg = 1)
+print(reg1)
+axs[1].plot(range(15,51), reg1[0]*np.array(range(15,51))+reg1[1])
+
+# Exponential regressions
+expreg0=np.polyfit(median_age_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
+expreg0=[np.exp(expreg0[0]),np.exp(expreg0[1])]
+axs[0].plot(range(15,51), expreg0[1]*(expreg0[0]**np.array(range(15,51))))
+
+expreg1=np.polyfit(median_age_list, np.log(gdp_per_capita_list), deg = 1)
+expreg1=[np.exp(expreg1[0]),np.exp(expreg1[1])]
+axs[1].plot(range(15,51), expreg1[1]*(expreg1[0]**np.array(range(15,51))))
 plt.show()
 
-reg=np.polyfit(median_age_list, gdp_per_capita_list, deg = 1)
-print(reg)
 
