@@ -70,6 +70,7 @@ for country in shared_between_sets:
     #print(country + " Median Age: " + str(median_age_data[country]["years"]))
 
 # Converting them all to np arrays
+hdi_list = np.array(hdi_list)
 median_age_list = np.array(median_age_list)
 gdp_per_capita_list = np.array(gdp_per_capita_list)
 composition_food_organic_waste_percent_list = np.array(composition_food_organic_waste_percent_list)
@@ -92,23 +93,27 @@ print("--")
 # Our initial hypothesis was that e_waste would be higher in countries with a lower median age, but this graph
 # shows the opposite, suggesting that e_waste is probably correlated with another factor that is associated
 # with median age, such as GDP. So, I also added the GDP graph, and the correlation looks almost exactly the same.
-fig, axs = plt.subplots(3,2)
+fig, axs = plt.subplots(3,3)
 axs[0, 0].set(ylabel="e-waste per person")
 axs[1, 0].set(ylabel="organic waste %")
-axs[2, 0].set(xlabel="median age", ylabel="gdp per capita")
+axs[2, 0].set(xlabel="median age", ylabel="plastic waste %")
 
 axs[0, 0].scatter(x=median_age_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
 axs[1, 0].scatter(x=median_age_list, y = composition_food_organic_waste_percent_list)
-axs[2, 0].scatter(x=median_age_list, y = gdp_per_capita_list)
+axs[2, 0].scatter(x=median_age_list, y = composition_plastic_percent_list)
 
-axs[0, 1].set(ylabel="e-waste per person")
-axs[1, 1].set(ylabel="organic waste %")
-axs[2, 1].set(xlabel="gdp per capita", ylabel="median age")
+axs[2, 1].set(xlabel="gdp per capita")
 
 axs[0, 1].scatter(x=gdp_per_capita_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
 axs[1, 1].scatter(x=gdp_per_capita_list, y = composition_food_organic_waste_percent_list)
-axs[2, 1].scatter(x=gdp_per_capita_list, y = median_age_list)
+axs[2, 1].scatter(x=gdp_per_capita_list, y = composition_plastic_percent_list)
 
+axs[2, 2].set(xlabel="gdp per capita")
+
+# still have to put hdi data into a list
+axs[0, 2].scatter(x=hdi_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
+axs[1, 2].scatter(x=hdi_list, y = composition_food_organic_waste_percent_list)
+axs[2, 2].scatter(x=hdi_list, y = composition_plastic_percent_list)
 
 # Linear regressions
 reg0=np.polyfit(median_age_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
@@ -117,7 +122,7 @@ axs[0, 0].plot(range(15,51), reg0[0]*np.array(range(15,51))+reg0[1], 'tab:red')
 reg1=np.polyfit(median_age_list, composition_food_organic_waste_percent_list, deg = 1)
 axs[1, 0].plot(range(15,51), reg1[0]*np.array(range(15,51))+reg1[1], 'tab:red')
 
-reg2=np.polyfit(median_age_list, gdp_per_capita_list, deg = 1)
+reg2=np.polyfit(median_age_list, composition_plastic_percent_list, deg = 1)
 axs[2, 0].plot(range(15,51), reg2[0]*np.array(range(15,51))+reg2[1], 'tab:red')
 
 reg01=np.polyfit(gdp_per_capita_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
@@ -126,8 +131,17 @@ axs[0, 1].plot(range(0,120000,10000), reg01[0]*np.array(range(0,120000,10000))+r
 reg11=np.polyfit(gdp_per_capita_list, composition_food_organic_waste_percent_list, deg = 1)
 axs[1, 1].plot(range(0,120000,10000), reg11[0]*np.array(range(0,120000,10000))+reg11[1], 'tab:red')
 
-reg21=np.polyfit(gdp_per_capita_list, median_age_list, deg = 1)
+reg21=np.polyfit(gdp_per_capita_list, composition_plastic_percent_list, deg = 1)
 axs[2, 1].plot(range(0,120000,10000), reg21[0]*np.array(range(0,120000,10000))+reg21[1], 'tab:red')
+
+reg02=np.polyfit(hdi_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
+axs[0, 2].plot(range(0,1), reg02[0]*np.array(range(0,1))+reg02[1], 'tab:red')
+
+reg12=np.polyfit(hdi_list, composition_food_organic_waste_percent_list, deg = 1)
+axs[1, 2].plot(range(0,1), reg12[0]*np.array(range(0,1))+reg12[1], 'tab:red')
+
+reg22=np.polyfit(hdi_list, composition_plastic_percent_list, deg = 1)
+axs[2, 2].plot(range(0,1), reg22[0]*np.array(range(0,1))+reg22[1], 'tab:red')
 
 # Exponential regressions
 expreg0=np.polyfit(median_age_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
@@ -138,7 +152,7 @@ expreg1=np.polyfit(median_age_list, np.log(composition_food_organic_waste_percen
 expreg1=[np.exp(expreg1[0]),np.exp(expreg1[1])]
 axs[1, 0].plot(range(15,51), expreg1[1]*(expreg1[0]**np.array(range(15,51))), 'tab:orange')
 
-expreg2=np.polyfit(median_age_list, np.log(gdp_per_capita_list), deg = 1)
+expreg2=np.polyfit(median_age_list, np.log(composition_plastic_percent_list), deg = 1)
 expreg2=[np.exp(expreg2[0]),np.exp(expreg2[1])]
 axs[2, 0].plot(range(15,51), expreg2[1]*(expreg2[0]**np.array(range(15,51))), 'tab:orange')
 
