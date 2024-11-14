@@ -132,7 +132,7 @@ axs[0, 1].scatter(x=gdp_per_capita_list, y = special_waste_e_waste_tons_year_lis
 axs[1, 1].scatter(x=gdp_per_capita_list, y = composition_food_organic_waste_percent_list)
 axs[2, 1].scatter(x=gdp_per_capita_list, y = composition_plastic_percent_list)
 
-axs[2, 2].set(xlabel="gdp per capita")
+axs[2, 2].set(xlabel="HDI")
 
 # still have to put hdi data into a list
 axs[0, 2].scatter(x=HDI_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
