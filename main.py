@@ -180,4 +180,34 @@ expreg2=np.polyfit(median_age_list, np.log(composition_plastic_percent_list), de
 expreg2=[np.exp(expreg2[0]),np.exp(expreg2[1])]
 axs[2, 0].plot(range(15,51), expreg2[1]*(expreg2[0]**np.array(range(15,51))), 'tab:orange')
 
+#Need to finish the stuff after the first one
+expreg01=np.polyfit(gdp_per_capita_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
+expreg01=[np.exp(expreg01[0]),np.exp(expreg01[1])]
+axs[0, 1].plot(range(15,51), expreg01[1]*(expreg01[0]**np.array(range(15,51))), 'tab:orange')
+
+expreg11=np.polyfit(gdp_per_capita_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
+expreg11=[np.exp(expreg11[0]),np.exp(expreg11[1])]
+axs[1, 1].plot(range(15,51), expreg11[1]*(expreg11[0]**np.array(range(15,51))), 'tab:orange')
+
+expreg12=np.polyfit(gdp_per_capita_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
+expreg12=[np.exp(expreg12[0]),np.exp(expreg12[1])]
+axs[1, 2].plot(range(15,51), expreg12[1]*(expreg12[0]**np.array(range(15,51))), 'tab:orange')
+
+expreg02=np.polyfit(gdp_per_capita_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
+expreg02=[np.exp(expreg02[0]),np.exp(expreg02[1])]
+axs[0, 2].plot(range(15,51), expreg02[1]*(expreg02[0]**np.array(range(15,51))), 'tab:orange')
+
+expreg12=np.polyfit(gdp_per_capita_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
+expreg12=[np.exp(expreg12[0]),np.exp(expreg12[1])]
+axs[1, 2].plot(range(15,51), expreg12[1]*(expreg12[0]**np.array(range(15,51))), 'tab:orange')
+
+expreg22=np.polyfit(gdp_per_capita_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
+expreg22=[np.exp(expreg22[0]),np.exp(expreg22[1])]
+axs[2, 2].plot(range(15,51), expreg22[1]*(expreg22[0]**np.array(range(15,51))), 'tab:orange')
+
+
+
+
+
+
 plt.show()
