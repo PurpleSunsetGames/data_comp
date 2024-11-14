@@ -5,7 +5,7 @@ import pandas as pd
 import pandas_datareader as pdr
 
 
-
+HDI_read = ''
 waste_read = ''
 median_age_read = ''
 with open("waste_data.csv", "r") as file:
@@ -14,9 +14,15 @@ with open("waste_data.csv", "r") as file:
 with open("Median_age_atoz.csv", "r") as file:
     median_age_read = file.read()
 
+with open("HDR23-24_Statistical_Annex_HDI_Table.csv") as file:
+    HDI_read = file.read()
+
+
 
 waste_data = {}
 median_age_data = {}
+HDI_data = {}
+
 column_names = []
 column_names_read = False
 for line in waste_read.split("\n"):
@@ -40,7 +46,18 @@ for line in median_age_read.split("\n"):
         L = line.split(",")
         median_age_data[L[0].strip('"')] = {"years":float(L[2].strip('"')), "ranking":L[4]}
 
-shared_between_sets = set(waste_data.keys()).intersection(set(median_age_data.keys()))
+column_names_read=False
+for line in HDI_read.split("\n"):
+    if not column_names_read:
+        column_names = line.split(",")
+        column_names_read=True
+    else:
+        L=line.split(",")
+        #Name and HDI Itself only
+        HDI_data[L[1].strip('"')] = {"HDI":float(L[2].strip('"'))}
+
+
+shared_between_sets = set(waste_data.keys()).intersection(set(median_age_data.keys()).intersection(set(HDI_data.keys())))
 median_age_list = []
 gdp_per_capita_list = []
 composition_food_organic_waste_percent_list = []
@@ -52,6 +69,7 @@ composition_plastic_percent_list = []
 population_population_number_of_people_list = []
 special_waste_e_waste_tons_year_list = []
 total_msw_generated_tons_year_list = []
+HDI_list = []
 for country in shared_between_sets:
     # Creating lists of each attribute
     median_age_list.append(median_age_data[country]["years"])
@@ -65,12 +83,18 @@ for country in shared_between_sets:
     population_population_number_of_people_list.append(waste_data[country]["population_population_number_of_people"])
     special_waste_e_waste_tons_year_list.append(waste_data[country]["special_waste_e_waste_tons_year"])
     total_msw_generated_tons_year_list.append(waste_data[country]["total_msw_generated_tons_year"])
+    HDI_list.append(HDI_data[country]["HDI"])
 
     #print(country + " GDP per Capita: " + str(waste_data[country]["gdp_per_capita"]))
     #print(country + " Median Age: " + str(median_age_data[country]["years"]))
 
+print(HDI_list)
+
+
+
+
 # Converting them all to np arrays
-hdi_list = np.array(hdi_list)
+HDI_list=np.array(HDI_list)
 median_age_list = np.array(median_age_list)
 gdp_per_capita_list = np.array(gdp_per_capita_list)
 composition_food_organic_waste_percent_list = np.array(composition_food_organic_waste_percent_list)
@@ -157,5 +181,3 @@ expreg2=[np.exp(expreg2[0]),np.exp(expreg2[1])]
 axs[2, 0].plot(range(15,51), expreg2[1]*(expreg2[0]**np.array(range(15,51))), 'tab:orange')
 
 plt.show()
-
-
