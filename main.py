@@ -135,9 +135,9 @@ axs[2, 1].scatter(x=gdp_per_capita_list, y = composition_plastic_percent_list)
 axs[2, 2].set(xlabel="gdp per capita")
 
 # still have to put hdi data into a list
-axs[0, 2].scatter(x=hdi_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
-axs[1, 2].scatter(x=hdi_list, y = composition_food_organic_waste_percent_list)
-axs[2, 2].scatter(x=hdi_list, y = composition_plastic_percent_list)
+axs[0, 2].scatter(x=HDI_list, y = special_waste_e_waste_tons_year_list / population_population_number_of_people_list)
+axs[1, 2].scatter(x=HDI_list, y = composition_food_organic_waste_percent_list)
+axs[2, 2].scatter(x=HDI_list, y = composition_plastic_percent_list)
 
 # Linear regressions
 reg0=np.polyfit(median_age_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
@@ -158,13 +158,13 @@ axs[1, 1].plot(range(0,120000,10000), reg11[0]*np.array(range(0,120000,10000))+r
 reg21=np.polyfit(gdp_per_capita_list, composition_plastic_percent_list, deg = 1)
 axs[2, 1].plot(range(0,120000,10000), reg21[0]*np.array(range(0,120000,10000))+reg21[1], 'tab:red')
 
-reg02=np.polyfit(hdi_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
+reg02=np.polyfit(HDI_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
 axs[0, 2].plot(range(0,1), reg02[0]*np.array(range(0,1))+reg02[1], 'tab:red')
 
-reg12=np.polyfit(hdi_list, composition_food_organic_waste_percent_list, deg = 1)
+reg12=np.polyfit(HDI_list, composition_food_organic_waste_percent_list, deg = 1)
 axs[1, 2].plot(range(0,1), reg12[0]*np.array(range(0,1))+reg12[1], 'tab:red')
 
-reg22=np.polyfit(hdi_list, composition_plastic_percent_list, deg = 1)
+reg22=np.polyfit(HDI_list, composition_plastic_percent_list, deg = 1)
 axs[2, 2].plot(range(0,1), reg22[0]*np.array(range(0,1))+reg22[1], 'tab:red')
 
 # Exponential regressions
