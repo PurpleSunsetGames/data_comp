@@ -159,13 +159,13 @@ reg21=np.polyfit(gdp_per_capita_list, composition_plastic_percent_list, deg = 1)
 axs[2, 1].plot(range(0,120000,10000), reg21[0]*np.array(range(0,120000,10000))+reg21[1], 'tab:red')
 
 reg02=np.polyfit(HDI_list, special_waste_e_waste_tons_year_list / population_population_number_of_people_list, deg = 1)
-axs[0, 2].plot(range(0,1), reg02[0]*np.array(range(0,1))+reg02[1], 'tab:red')
+axs[0, 2].plot(np.array(range(40,100))/100, reg02[0]*np.array(range(40,100))/100+reg02[1], 'tab:red')
 
 reg12=np.polyfit(HDI_list, composition_food_organic_waste_percent_list, deg = 1)
-axs[1, 2].plot(range(0,1), reg12[0]*np.array(range(0,1))+reg12[1], 'tab:red')
+axs[1, 2].plot(np.array(range(40,100))/100, reg12[0]*np.array(range(40,100))/100+reg12[1], 'tab:red')
 
 reg22=np.polyfit(HDI_list, composition_plastic_percent_list, deg = 1)
-axs[2, 2].plot(range(0,1), reg22[0]*np.array(range(0,1))+reg22[1], 'tab:red')
+axs[2, 2].plot(np.array(range(40,100))/100, reg22[0]*np.array(range(40,100))/100+reg22[1], 'tab:red')
 
 # Exponential regressions
 expreg0=np.polyfit(median_age_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
@@ -195,19 +195,15 @@ axs[2, 1].plot(range(15,51), expreg21[1]*(expreg21[0]**np.array(range(15,51))), 
 
 expreg02=np.polyfit(HDI_list, np.log(special_waste_e_waste_tons_year_list / population_population_number_of_people_list), deg = 1)
 expreg02=[np.exp(expreg02[0]),np.exp(expreg02[1])]
-axs[0, 2].plot(np.array(range(0,100))/100, expreg02[1]*(expreg02[0]**(np.array(range(0,100))/100)), 'tab:orange')
+axs[0, 2].plot(np.array(range(35,100))/100, expreg02[1]*(expreg02[0]**(np.array(range(35,100))/100)), 'tab:orange')
 
 expreg12=np.polyfit(HDI_list, np.log(composition_food_organic_waste_percent_list), deg = 1)
 expreg12=[np.exp(expreg12[0]),np.exp(expreg12[1])]
-axs[1, 2].plot(np.array(range(0,100))/100, expreg12[1]*(expreg12[0]**(np.array(range(0,100))/100)), 'tab:orange')
+axs[1, 2].plot(np.array(range(35,100))/100, expreg12[1]*(expreg12[0]**(np.array(range(35,100))/100)), 'tab:orange')
 
 expreg22=np.polyfit(HDI_list, np.log(composition_plastic_percent_list), deg = 1)
 expreg22=[np.exp(expreg22[0]),np.exp(expreg22[1])]
-axs[2, 2].plot(np.array(range(0,100))/100, expreg22[1]*(expreg22[0]**(np.array(range(0,100))/100)), 'tab:orange')
-
-
-
-
+axs[2, 2].plot(np.array(range(35,100))/100, expreg22[1]*(expreg22[0]**(np.array(range(35,100))/100)), 'tab:orange')
 
 
 plt.show()
